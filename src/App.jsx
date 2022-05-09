@@ -35,7 +35,7 @@ function App() {
             else if (operation === '-') result = parseFloat(prevNumber, 10) - parseFloat(dataDisplay, 10)
             else if (operation === 'x') result = parseFloat(prevNumber, 10) * parseFloat(dataDisplay, 10)
             else if (operation === '/') result = parseFloat(prevNumber, 10) / parseFloat(dataDisplay, 10)
-            setDisplay(result.toString().slice(0, 9))
+            setDisplay(result.toString())
             setNumData([...[]])
             setOperation('')
             setPrevNumber(0)
