@@ -1,8 +1,8 @@
 import React from 'react'
 
-function OperatorButton({ value }) {
+function OperatorButton({ value, setButton }) {
     return (
-        <button type="button" className="operator">{value}</button>
+        <button type="button" className="operator" onClick={() => setButton(value)}>{value}</button>
     )
 }
 
