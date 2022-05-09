@@ -36,6 +36,9 @@ function App() {
             else if (operation === 'x') result = parseFloat(prevNumber, 10) * parseFloat(dataDisplay, 10)
             else if (operation === '/') result = parseFloat(prevNumber, 10) / parseFloat(dataDisplay, 10)
             setDisplay(result)
+            setNumData([...[]])
+            setOperation('')
+            setPrevNumber(0)
         } else if (value === 'AC') {
             setDisplay(0)
             setNumData([...[]])
