@@ -6,7 +6,7 @@ function Screen({ value }) {
     if (parseInt(value, 10) >= 0) {
         screenContent = value
     }
-    
+
     return (
         <input type="text" className="screen" value={screenContent} readOnly />
     )
