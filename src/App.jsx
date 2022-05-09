@@ -31,10 +31,10 @@ function App() {
     const functionHandler = (value) => {
         let result = 0
         if (value === '=') {
-            if (operation === '+') result = parseInt(prevNumber, 10) + parseInt(dataDisplay, 10)
-            else if (operation === '-') result = parseInt(prevNumber, 10) - parseInt(dataDisplay, 10)
-            else if (operation === 'x') result = parseInt(prevNumber, 10) * parseInt(dataDisplay, 10)
-            else if (operation === '/') result = parseInt(prevNumber, 10) / parseInt(dataDisplay, 10)
+            if (operation === '+') result = parseFloat(prevNumber, 10) + parseFloat(dataDisplay, 10)
+            else if (operation === '-') result = parseFloat(prevNumber, 10) - parseFloat(dataDisplay, 10)
+            else if (operation === 'x') result = parseFloat(prevNumber, 10) * parseFloat(dataDisplay, 10)
+            else if (operation === '/') result = parseFloat(prevNumber, 10) / parseFloat(dataDisplay, 10)
             setDisplay(result)
         } else if (value === 'AC') {
             setDisplay(0)
