@@ -7,7 +7,7 @@ import Screen from './components/Screen'
 function App() {
     const [dataDisplay, setDisplay] = useState('0')
     const [operation, setOperation] = useState('')
-    const [prevNumber, setPrevNumber] = useState(0)
+    const [prevNumber, setPrevNumber] = useState('0')
     const [numData, setNumData] = useState([])
 
     const setData = (value) => {
