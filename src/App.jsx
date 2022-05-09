@@ -5,7 +5,7 @@ import OperatorButton from './components/OperatorButton'
 import Screen from './components/Screen'
 
 function App() {
-    const [dataDisplay, setDisplay] = useState(0)
+    const [dataDisplay, setDisplay] = useState('0')
     const [operation, setOperation] = useState('')
     const [prevNumber, setPrevNumber] = useState(0)
     const [numData, setNumData] = useState([])
@@ -24,7 +24,7 @@ function App() {
     const operationHandler = (value) => {
         setPrevNumber(dataDisplay)
         setNumData([...[]])
-        setDisplay(0)
+        setDisplay('0')
         setOperation(value)
     }
 
@@ -35,12 +35,12 @@ function App() {
             else if (operation === '-') result = parseFloat(prevNumber, 10) - parseFloat(dataDisplay, 10)
             else if (operation === 'x') result = parseFloat(prevNumber, 10) * parseFloat(dataDisplay, 10)
             else if (operation === '/') result = parseFloat(prevNumber, 10) / parseFloat(dataDisplay, 10)
-            setDisplay(result)
+            setDisplay(result.toString().slice(0, 9))
             setNumData([...[]])
             setOperation('')
             setPrevNumber(0)
         } else if (value === 'AC') {
-            setDisplay(0)
+            setDisplay('0')
             setNumData([...[]])
             setOperation('')
             setPrevNumber(0)
