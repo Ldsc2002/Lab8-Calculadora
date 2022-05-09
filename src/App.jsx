@@ -1,5 +1,7 @@
 import React from 'react'
+import FunctionButton from './components/FunctionButton'
 import NumberButton from './components/NumberButton'
+import OperatorButton from './components/OperatorButton'
 import Screen from './components/Screen'
 
 function App() {
@@ -9,10 +11,10 @@ function App() {
                 <Screen value="Testing" />
 
                 <div className="button-container">
-                    <button type="button" className="operator">/</button>
-                    <button type="button" className="operator">+</button>
-                    <button type="button" className="operator">-</button>
-                    <button type="button" className="operator">x</button>
+                    <OperatorButton value="/" />
+                    <OperatorButton value="x" />
+                    <OperatorButton value="+" />
+                    <OperatorButton value="-" />
 
                     <NumberButton value="7" />
                     <NumberButton value="8" />
@@ -29,8 +31,8 @@ function App() {
                     <NumberButton value="0" />
                     <NumberButton value="." />
 
-                    <button type="button" className="all-clear">AC</button>
-                    <button type="button" className="equal-sign">=</button>
+                    <FunctionButton value="AC" />
+                    <FunctionButton value="=" />
                 </div>
             </div>
         </div>
