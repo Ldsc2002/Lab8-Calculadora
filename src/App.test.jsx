@@ -1,33 +1,50 @@
 import React from 'react'
-import { render } from '@testing-library/react'
-// import { render, screen } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import App from './App'
 
-it('Renders', () => {
+it('Carga UI', () => {
     render(<App />)
 })
 
-// it('renders a count button', () => {
-//     render(<App />)
+it('Botón añade número a la pantalla', async () => {
+    render(<App />)
 
-//     const element = screen.getByText(/count\ is\:/)
-//     expect(element).toBeInTheDocument()
-// })
+    const element = screen.getByText('1')
+    expect(element).toBeInTheDocument()
 
-// it('increases count when button is clicked', async () => {
-//     render(<App />)
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('1')).toBeInTheDocument()
 
-//     const element = screen.getByText(/count\ is\:\s+0/)
-//     expect(element).toBeInTheDocument()
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('11')).toBeInTheDocument()
+})
 
-//     await userEvent.click(element)
-//     expect(screen.getByText(/count\ is\:\s+1/)).toBeInTheDocument()
+it('5 + 5 = 10 y despliega correctamente', async () => {
+    render(<App />)
 
-//     await userEvent.click(element)
-//     expect(screen.getByText(/count\ is\:\s+2/)).toBeInTheDocument()
-// })
+    const num5 = screen.getByText('5')
+    expect(num5).toBeInTheDocument()
+
+    const sumButton = screen.getByText('+')
+    expect(sumButton).toBeInTheDocument()
+
+    const equalsButton = screen.getByText('=')
+    expect(equalsButton).toBeInTheDocument()
+
+    await userEvent.click(num5)
+    expect(screen.getByDisplayValue('5')).toBeInTheDocument()
+
+    await userEvent.click(sumButton)
+    expect(screen.getByDisplayValue('0')).toBeInTheDocument()
+
+    await userEvent.click(num5)
+    expect(screen.getByDisplayValue('5')).toBeInTheDocument()
+
+    await userEvent.click(equalsButton)
+    expect(screen.getByDisplayValue('10')).toBeInTheDocument()
+})
 
 // it('increases the squared label when button is clicked', async () => {
 //     render(<App />)
