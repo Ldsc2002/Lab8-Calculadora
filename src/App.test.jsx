@@ -144,3 +144,40 @@ it('Resultado con muchos dígitos muestra ERROR', async () => {
     await userEvent.click(equalsButton)
     expect(screen.getByDisplayValue('ERROR')).toBeInTheDocument()
 })
+
+it('Operaciones con decimales', async () => {
+    render(<App />)
+
+    const num2 = screen.getByText('2')
+    expect(num2).toBeInTheDocument()
+
+    const num7 = screen.getByText('7')
+    expect(num7).toBeInTheDocument()
+
+    const dotButton = screen.getByText('.')
+    expect(dotButton).toBeInTheDocument()
+
+    const sumButton = screen.getByText('+')
+    expect(sumButton).toBeInTheDocument()
+
+    const equalsButton = screen.getByText('=')
+    expect(equalsButton).toBeInTheDocument()
+
+    await userEvent.click(num2)
+    expect(screen.getByDisplayValue('2')).toBeInTheDocument()
+
+    await userEvent.click(dotButton)
+    expect(screen.getByDisplayValue('2.')).toBeInTheDocument()
+
+    await userEvent.click(num2)
+    expect(screen.getByDisplayValue('2.2')).toBeInTheDocument()
+
+    await userEvent.click(sumButton)
+    expect(screen.getByDisplayValue('0')).toBeInTheDocument()
+
+    await userEvent.click(num7)
+    expect(screen.getByDisplayValue('7')).toBeInTheDocument()
+
+    await userEvent.click(equalsButton)
+    expect(screen.getByDisplayValue('9.2')).toBeInTheDocument()
+})
