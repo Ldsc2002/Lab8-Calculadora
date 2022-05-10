@@ -60,19 +60,19 @@ it('El usuario solo puede ingresar 9 números', async () => {
 
     await userEvent.click(element)
     expect(screen.getByDisplayValue('111')).toBeInTheDocument()
-    
+
     await userEvent.click(element)
     expect(screen.getByDisplayValue('1111')).toBeInTheDocument()
-    
+
     await userEvent.click(element)
     expect(screen.getByDisplayValue('11111')).toBeInTheDocument()
-    
+
     await userEvent.click(element)
     expect(screen.getByDisplayValue('111111')).toBeInTheDocument()
-    
+
     await userEvent.click(element)
     expect(screen.getByDisplayValue('1111111')).toBeInTheDocument()
-    
+
     await userEvent.click(element)
     expect(screen.getByDisplayValue('11111111')).toBeInTheDocument()
 
