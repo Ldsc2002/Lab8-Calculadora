@@ -46,35 +46,101 @@ it('5 + 5 = 10 y despliega correctamente', async () => {
     expect(screen.getByDisplayValue('10')).toBeInTheDocument()
 })
 
-// it('increases the squared label when button is clicked', async () => {
-//     render(<App />)
+it('El usuario solo puede ingresar 9 números', async () => {
+    render(<App />)
 
-//     const button = screen.getByText(/count\ is\:\s+0/)
-//     expect(button).toBeInTheDocument()
+    const element = screen.getByText('1')
+    expect(element).toBeInTheDocument()
 
-//     await userEvent.click(button)
-//     expect(screen.getByText(/S(q|k)u(a)+red?\:\s+1/)).toBeInTheDocument()
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('1')).toBeInTheDocument()
 
-//     await userEvent.click(button)
-//     expect(screen.getByText(/S(q|k)u(a)+red?\:\s+4/)).toBeInTheDocument()
-// })
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('11')).toBeInTheDocument()
 
-// it('renders an input', async () => {
-//     render(<App />)
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('111')).toBeInTheDocument()
+    
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('1111')).toBeInTheDocument()
+    
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('11111')).toBeInTheDocument()
+    
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('111111')).toBeInTheDocument()
+    
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('1111111')).toBeInTheDocument()
+    
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('11111111')).toBeInTheDocument()
 
-//     const input = await screen.findByPlaceholderText(/Enter your name:/)
-//     expect(input).toBeInTheDocument()
-// })
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('111111111')).toBeInTheDocument()
 
-// it('receives only numbers', async () => {
-//     render(<App />)
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('111111111')).toBeInTheDocument()
 
-//     const input = await screen.findByPlaceholderText(/Enter your name:/)
-//     expect(input).toBeInTheDocument()
+    await userEvent.click(element)
+    expect(screen.getByDisplayValue('111111111')).toBeInTheDocument()
+})
 
-//     await userEvent.type(input, 'Dennis', {
-//         delay: 20,
-//     })
+it('Resultado negativo muestra ERROR', async () => {
+    render(<App />)
 
-//     expect(screen.getByDisplayValue('ERROR')).toBeInTheDocument()
-// })
+    const num5 = screen.getByText('5')
+    expect(num5).toBeInTheDocument()
+
+    const num6 = screen.getByText('6')
+    expect(num6).toBeInTheDocument()
+
+    const substractButton = screen.getByText('-')
+    expect(substractButton).toBeInTheDocument()
+
+    const equalsButton = screen.getByText('=')
+    expect(equalsButton).toBeInTheDocument()
+
+    await userEvent.click(num5)
+    expect(screen.getByDisplayValue('5')).toBeInTheDocument()
+
+    await userEvent.click(substractButton)
+    expect(screen.getByDisplayValue('0')).toBeInTheDocument()
+
+    await userEvent.click(num6)
+    expect(screen.getByDisplayValue('6')).toBeInTheDocument()
+
+    await userEvent.click(equalsButton)
+    expect(screen.getByDisplayValue('ERROR')).toBeInTheDocument()
+})
+
+it('Resultado con muchos dígitos muestra ERROR', async () => {
+    render(<App />)
+
+    const num2 = screen.getByText('2')
+    expect(num2).toBeInTheDocument()
+
+    const num7 = screen.getByText('7')
+    expect(num7).toBeInTheDocument()
+
+    const divideButton = screen.getByText('/')
+    expect(divideButton).toBeInTheDocument()
+
+    const equalsButton = screen.getByText('=')
+    expect(equalsButton).toBeInTheDocument()
+
+    await userEvent.click(num2)
+    expect(screen.getByDisplayValue('2')).toBeInTheDocument()
+
+    await userEvent.click(num2)
+    expect(screen.getByDisplayValue('22')).toBeInTheDocument()
+
+    await userEvent.click(divideButton)
+    expect(screen.getByDisplayValue('0')).toBeInTheDocument()
+
+    await userEvent.click(num7)
+    expect(screen.getByDisplayValue('7')).toBeInTheDocument()
+
+    await userEvent.click(equalsButton)
+    expect(screen.getByDisplayValue('ERROR')).toBeInTheDocument()
+})
